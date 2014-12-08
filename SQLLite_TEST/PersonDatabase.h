@@ -33,6 +33,8 @@
 
 - (void)addPersonWithName:(NSString *)name age:(NSString *)age;
 
+- (void)updatePersonWithKey:(NSString *)key name:(NSString *)name age:(NSString *)age;
+
 - (void)deletePersonWithKey:(long)key;
 
 @end

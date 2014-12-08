@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B49782CB-E4D2-451B-9620-5EB098F906C1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SQLLite_TEST</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3B029006F382A531B011B49726B18843796E0BBF</key>
+		<string>https://github.com/swsdeveloper/TestWithSQLite.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SQLLite_TEST.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3B029006F382A531B011B49726B18843796E0BBF</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/swsdeveloper/TestWithSQLite.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3B029006F382A531B011B49726B18843796E0BBF</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3B029006F382A531B011B49726B18843796E0BBF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SQLite3Practice</string>
+		</dict>
+	</array>
+</dict>
+</plist>

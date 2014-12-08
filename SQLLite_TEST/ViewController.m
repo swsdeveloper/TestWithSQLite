@@ -47,6 +47,21 @@
     [self displayAllPersons];
 }
 
+- (IBAction)updatePersonButton:(id)sender {
+    
+    if (MYDEBUG) { NSLog(@" --------------------------- Update Person button was tapped.."); }
+    
+    [self.personDB updatePersonWithKey:self.keyIdLabel.text name:self.nameField.text age:self.ageField.text];
+    
+    self.keyLabel.text = @"";
+    self.keyIdLabel.text = @"";
+
+    [self displayAllPersons];
+}
+
+
+
+
 // The following method toggles tableView Editing mode on and off (and changes the button's name, accordingly)
 - (IBAction)deletePersonButton:(id)sender { // This button is intially labeled "Delete" when pgm starts
     
@@ -112,6 +127,20 @@
             
             [tableView reloadData];
         }
+    }
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (MYDEBUG) { NSLog(@"in didSelectRowAtIndexPath"); }
+
+    Person *person = [self.personDB.arrayOfPersons objectAtIndex:indexPath.row];
+    
+    if (person) {
+        self.nameField.text = person.name;
+        self.ageField.text = [NSString stringWithFormat:@"%d", person.age];
+        self.keyLabel.text = @"Key: ";
+        self.keyIdLabel.text = [NSString stringWithFormat:@"%ld", person.key];
     }
 }
 

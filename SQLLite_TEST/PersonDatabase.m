@@ -182,6 +182,45 @@
     }
 }
 
+- (void)updatePersonWithKey:(NSString *)key name:(NSString *)name age:(NSString *)age {
+    
+    // Build an UPDATE sql stmt to update a new Person in the PERSONS Table
+    // The 2 values Name (a UTF8 C string) and Age (an int) are passed from the contents of UITextFields
+    // The Key (ID#) will automatically be set because it is defined as Auto Increment
+    
+    int openRc = [self.sqlAO openDatabase];
+    
+    if (openRc == SQLITE_OK) {
+        
+        NSString *insertStmt = [NSString stringWithFormat:@"UPDATE PERSONS SET NAME = '%@', AGE = %d WHERE ID = %d", name, [age intValue], [key intValue]];
+        
+        const char *sql_stmt = [insertStmt UTF8String];
+        
+        int execRc = [self.sqlAO sqlExecStmt:sql_stmt];
+        
+        if (execRc == SQLITE_OK) {
+            Person *person = [[Person alloc] init];
+            
+            [person setKey:sqlite3_last_insert_rowid(self.sqlAO.database)];  // get key (i.e., primary key) of record just updated in table
+            
+            [person setName:name];
+            [person setAge:[age intValue]];  // Convert NSString to int
+            
+            [self.arrayOfPersons addObject:person];
+            
+            [self showUpdateAlertForKey:[key intValue] name:name];
+            
+        } else {
+            NSLog(@"\n\nUpdate Failed with return code: %d", execRc);
+        }
+        
+        [self.sqlAO closeDatabase];
+        
+    } else {
+        NSLog(@"\n\nOpen Database Failed with return code: %d", openRc);
+    }
+}
+
 - (void)deletePersonWithKey:(long)key {
     // The person whose id is |id| will be deleted from the PERSONS table of the database
     // Open the db, EXEC a "Delete person" stmt, and alert the user
@@ -241,5 +280,14 @@
     [alert show];
 }
 
+
+- (void)showUpdateAlertForKey:(long)key name:(NSString *)name {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Updated person"
+                                                    message:[NSString stringWithFormat:@"%ld - %@ updated in DB", key, name]
+                                                   delegate:self
+                                          cancelButtonTitle:@"Close"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
 
 @end

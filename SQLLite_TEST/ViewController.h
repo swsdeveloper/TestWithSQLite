@@ -22,7 +22,14 @@
 @property (retain, nonatomic) PersonDatabase *personDB;
 
 
+@property (weak, nonatomic) IBOutlet UILabel *keyLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *keyIdLabel;
+
+
 - (IBAction)addPersonButton:(id)sender;
+
+- (IBAction)updatePersonButton:(id)sender;
 
 - (IBAction)deletePersonButton:(id)sender;
 
